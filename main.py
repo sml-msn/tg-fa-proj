@@ -6,12 +6,15 @@ model_name = "sml-msn/pst5-tg-fa-bidirectional"
 tokenizer = T5Tokenizer.from_pretrained(model_name)
 model = T5ForConditionalGeneration.from_pretrained(model_name)
 
+# transliteration function
 def translit(x, **kwargs):
     inputs = tokenizer(x, return_tensors='pt').to(model.device)     
     with torch.no_grad():    
         hypotheses = model.generate(**inputs, **kwargs)        
     return tokenizer.decode(hypotheses[0], skip_special_tokens=True)
 
+# checking if the input text has more than 500 symbols
+# or it is empty
 def check_length(txt):
 	if len(txt) > 500:
 		st.write('Output: ')
@@ -23,7 +26,9 @@ def check_length(txt):
 		return False
 	else:
 		return True
-		
+
+# if the text is devided in sentences, 
+# the text will be split and transliterated sentence by sentence 
 def split_n_translit(txt):
 	lst = txt.split('.')
 	blanks = lst.count('')
@@ -39,11 +44,14 @@ def split_n_translit(txt):
 			text.append(translit(sentence, max_length = 1024)+'.')
 		st.write(' '.join(text))
 		return True	
-	
+
+# title
 st.title('Tg-Fa transliterator')
 
+# text area
 txt = st.text_area('Enter your text:', placeholder = 'Your text must have less than 500 symbols.')
 
+# transliteration sequence
 if st.button('Transliterate'):
 	if check_length(txt) == True:
 		st.write('Output: ')
