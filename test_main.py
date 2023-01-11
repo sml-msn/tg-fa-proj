@@ -26,3 +26,8 @@ def test_check_length_ok():
 		ки акнун рустое аз ноҳияи Панҷакент дар вилояти Суғд аст, ба дунё омадааст. 
 		'''
 	assert m.check_length(txt) == True
+
+# checking if the text consists only of dots
+def test_split_n_translit_dots_only():
+	txt = '......'
+	assert m.split_n_translit(txt) == False
