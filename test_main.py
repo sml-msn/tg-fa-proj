@@ -18,3 +18,11 @@ def test_check_length_too_long():
 def test_check_length_blank():
 	txt = ''
 	assert m.check_length(txt) == False
+
+# checking if the text is of acceptable length
+def test_check_length_ok():
+	txt = '''
+		Бунёдгузори адабиёти форсу тоҷик Абӯабдуллоҳ Рӯдакӣ соли 858 дар деҳаи Панҷрӯд аз тавобеъи Самарқанд (бинобар ин дар баъзе сарчашмаҳо Рӯдакии Самарқандӣ низ меноманд), 
+		ки акнун рустое аз ноҳияи Панҷакент дар вилояти Суғд аст, ба дунё омадааст. 
+		'''
+	assert m.check_length(txt) == True
