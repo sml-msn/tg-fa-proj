@@ -13,3 +13,8 @@ def test_check_length_too_long():
 		Асосгузор ва сардафтари адабиёт аслан маънои онро надорад ки пеш аз дигарон асар эҷод карда бошад.
 		'''
 	assert m.check_length(txt) == False
+
+# cheking if the text is empty
+def test_check_length_blank():
+	txt = ''
+	assert m.check_length(txt) == False
