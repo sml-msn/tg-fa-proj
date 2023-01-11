@@ -31,3 +31,13 @@ def test_check_length_ok():
 def test_split_n_translit_dots_only():
 	txt = '......'
 	assert m.split_n_translit(txt) == False
+
+# checking if the text consists of separate sentences
+def test_split_n_translit_ok():
+	txt = '''
+		Таърихи ҳазору сад солаи адабиёти тоҷик бо номи бунёдгузори он устод Рӯдакӣ сахт вобаста аст. 
+		Рӯдакиро муосиронаш ва суханварони баъдина бо унвонҳои ифтихорӣ: 
+		Одамушуаро форсӣ: آدم الشعرا‎ Қофиласорои назми форсӣ, Соҳибқирони шоирон, Султони шоирон, Мақаддумушуаро ва ҳамсони инҳо ёд мекунанд. 
+		Асосгузор ва сардафтари адабиёт аслан маънои онро надорад ки пеш аз дигарон асар эҷод карда бошад.
+		'''
+	assert m.split_n_translit(txt) == True
