@@ -90,7 +90,7 @@ if st.button('Transliterate'):
 		else:
 			st.write(translit(txt, max_length = 1024))	
 
-# button display	
+# demo button 	
 if st.button('Run demo'):
 	st.write('Output: ')
 	demo()	
