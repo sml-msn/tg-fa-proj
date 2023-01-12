@@ -1,6 +1,15 @@
 import main as m
 import pytest
+import pandas as pd
+from Levenshtein import distance, ratio
 
+# accuracy tg-fa
+def test_translit_acc_tg_fa():
+	sample = pd.read_csv('test180k.csv', sep=',').sample(1)
+	for k, row in sample.iterrows():
+		target = row.Pers
+		prediction = m.translit(row.Taj, max_length = 1024)
+	assert ratio(target, prediction) > 0.8
 
 # cheking if the text is too long
 def test_check_length_too_long():
